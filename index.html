@@ -4,17 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ChatGPT Task Manager</title>
 </head>
 <body>
-    <div class="class-one"></div>
-    <div class="class-two"></div>
-    <div class="class-three"></div>
+    <div class="results">
+        <!-- @TODO: this will show the results -->
+        <h3>Your plan for the day</h3>
+        <div>
+            <p>10am - 12pm: Eat</p>
+        </div>
+        <div>
+            <p>10am - 12pm: Exercise</p>
+        </div>
+        <div>
+            <p>10am - 12pm: Read</p>
+        </div>
+        <div>
+            <p>10am - 12pm: Exercise</p>
+        </div>
+    </div>
 
-    <div id="my-header"></div>
 
-    <input type="text" id="some-id">
+    <!-- emmet -->
+    <div>
+        <form action="#">
+            <input type="text" name="form-prompt" id="form-prompt">
 
-    <button class="bg-red-300"></button>
+            <input type="submit" value="generate">
+        </form>
+
+    </div>
+    
 </body>
 </html>
