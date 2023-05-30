@@ -16,7 +16,7 @@ This projects allows us to use ChatGPT to help people manage their workload
   - 5. `npx tailwindcss -i ./tailwind.css -o ./styles.css --watch`
   - 6. add my `link:css` point to `./style.css`
   - 7. Do some backflips (highly optional)
-- [ ] Setup HTML semantic structure
+- [x] Setup HTML semantic structure
 - [ ] ...
 
 ### Additional notes:
