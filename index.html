@@ -1,41 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Task Manager</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="results">
-        <input type="text"> <!--- A SAMPLE .......-->
-        <!----- sasmsdedmeodmeoemeod -->
-        <!-- @TODO: this will show the results -->
-        <h3 class="text-4xl">Your plan for the day</h3>
-        <div class="p-16 bg-blue-300">
-            <p class="text-3xl">10am - 12pm: Eat</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task GPT | AI Task Manager</title>
+  </head>
+  <body>
+    <header>
+      <h1>TaskGPT</h1>
+      <button><i>refres</i> Start over</button>
+    </header>
+
+    <main>
+      <!-- start: first section -->
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+          tempora praesentium iusto laborum quia provident recusandae repellat
+          labore aspernatur deleniti. Quis, eligendi libero?
+        </p>
+        <div>
+          <p>Lorem, ipsum dolor.</p>
         </div>
         <div>
-            <p class="text-2xl">10am - 12pm: Exercise</p>
+          <p>Lorem, ipsum dolor.</p>
         </div>
         <div>
-            <p>10am - 12pm: Read</p>
+          <p>Lorem, ipsum dolor.</p>
         </div>
         <div>
-            <p>10am - 12pm: Exercise</p>
+          <p>Lorem, ipsum dolor.</p>
         </div>
-    </div>
+      </div>
+      <!-- end: first section -->
 
+      <!-- start: second section-->
+      <div>
+        <p>what should i do today?</p>
+      </div>
+      <!-- end: second section-->
 
-    <!-- emmet -->
-    <div>
-        <form action="#">
-            <input type="text" name="form-prompt" id="form-prompt" class="border-2">
-<input type="submit" class="border-2" value="generate">
-        </form>
+      <!-- start: 3rd section -->
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+          similique beatae maxime quo, voluptas molestiae!
+        </p>
+        <div>
+          <p>generate full thingas to do.</p>
+        </div>
+        <div>
+          <p>suggest something</p>
+        </div>
 
-    </div>
-    
-</body>
+        <div>
+          <p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            Generate another variant
+          </p>
+        </div>
+        <!-- section navigation -->
+        <!-- block-level e.g div, p, img, etc. -->
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <!-- inline-level -->
+          <span>1/2</span>
+        </div>
+      </div>
+      <!-- end: 3rd section -->
+
+      <!-- start: input box for prompts-->
+      <div>
+        <textarea
+          name="prompt"
+          id="prompt"
+          cols="30"
+          rows="10"
+          placeholder="type or use the mic, press enter to submit"
+        ></textarea>
+      </div>
+      <!-- end: input box for prompts -->
+    </main>
+
+    <footer>
+      <p>TaskGPT 2023. All rights reserved</p>
+    </footer>
+  </body>
 </html>
