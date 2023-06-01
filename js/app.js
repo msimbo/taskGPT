@@ -1,10 +1,46 @@
+// Variables
+const pomoBtn = document.getElementById("pomo-btn"); // object
+const matrixBtn = document.getElementById("matrix-btn"); //object
+const ztdBtn = document.getElementById("ztd-btn"); //object
+const gtdBtn = document.getElementById("gtd-btn"); //object
+
+// // Events Handlers
+// Pomodoro
+pomoBtn.addEventListener("click", function () {
+  console.log("You clicked the PMD Btn");
+});
+
+// Matrix
+matrixBtn.addEventListener("click", function () {
+  console.log("You clicked the Matrix Btn");
+});
+
+// ZTD
+ztdBtn.addEventListener("click", function () {
+  console.log("You clicked the ZTD Btn");
+});
+
+// GTD
+gtdBtn.addEventListener("click", function () {
+  console.log("You clicked the GTD Btn");
+});
+
 // C-style
 
 // get that HTML section into JS
-const pomoBtn = document.getElementById("pomo-btn");
-const matrixBtn = document.getElementById("matrix-btn");
+
+// const document =......pomoBtn..
+//1. declared the variables we need
+
+//2. watch for events on that variable, specifically a "click/tap"
+pomoBtn.addEventListener(
+  "click",
+
+  function () {}
+);
+
 console.log(pomoBtn);
-console.log(matrixBtn);
+// console.log(matrixBtn);
 
 // console.log("deed")
 
