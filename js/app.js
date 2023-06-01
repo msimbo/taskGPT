@@ -3,7 +3,6 @@
 // get that HTML section into JS
 const pomoBtn = document.getElementById("pomo-btn");
 const matrixBtn = document.getElementById("matrix-btn");
-
 console.log(pomoBtn);
 console.log(matrixBtn);
 
