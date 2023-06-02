@@ -3,94 +3,124 @@ const pomoBtn = document.getElementById("pomo-btn"); // object
 const matrixBtn = document.getElementById("matrix-btn"); //object
 const ztdBtn = document.getElementById("ztd-btn"); //object
 const gtdBtn = document.getElementById("gtd-btn"); //object
+const taskType = document.getElementById("task-type");
 
-// define var
+// define variable
 const taskPromptTextEl = document.getElementById("task-prompt");
 const taskPromptResultEl = document.getElementById("task-prompt-result");
 
-// // Events Handlers
-// ==== text prompt
-taskPromptTextEl.addEventListener("blur", function () {
+// Events Handlers
+
+// task switcher
+taskType.addEventListener("change", function () {
+  //@TODO: make this code work
+  // when I select an option, it apppends similar to L32-107
+  updateResult();
+});
+
+// taskType.addEventListener("change", (event) => {
+//   if (event.key === "ArrowUp") showBird();
+//   if (event.key === "ArrowDown") showConfetti();
+//   if (event.key === "Meta") shutDownGame();
+// });
+
+// an alternative
+// taskType.addEventListener("change", () => updateResult());
+
+// === text prompt
+taskPromptTextEl.addEventListener("keydown", function (event) {
   //   console.log("this works on loosing focus");
-
   //   console.log(taskPromptResultEl);
+  // console.log(event.key);
+  // console.log(event.key === "Enter");
 
-  taskPromptResultEl.innerHTML = `
-  <!-- start: second section-->
-      <div class="p-6">
-        <p>what should i do today?</p>
-      </div>
-      <!-- end: second section-->
+  // if (event.key === "Enter") console.log("Run onenter pressed");
+  if (event.key === "Enter") {
+    taskPromptResultEl.innerHTML = `
+    <!-- start: second section-->
+        <div class="p-6">
+          <p>what should i do today?</p>
+        </div>
+        <!-- end: second section-->
 
-      <!-- start: 3rd section -->
-      <div class="p-6 bg-gray-200">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-          similique beatae maxime quo, voluptas molestiae!
-        </p>
-        <div class="section-btn">
-          <p>generate full thingas to do.</p>
-        </div>
-        <div class="section-btn">
-          <p>suggest something</p>
-        </div>
-
-        <div class="section-btn flex">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <p>Generate another variant</p>
-        </div>
-        <!-- section navigation -->
-        <!-- block-level e.g div, p, img, etc. -->
-        <div class="flex justify-between">
-          <div class="flex">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+        <!-- start: 3rd section -->
+        <div class="p-6 bg-gray-200">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+            similique beatae maxime quo, voluptas molestiae!
+          </p>
+          <div class="section-btn">
+            <p>generate full thingas to do.</p>
           </div>
-          <!-- inline-level -->
-          <strong>1/2</strong>
+          <div class="section-btn">
+            <p>suggest something</p>
+          </div>
+
+          <div class="section-btn flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <p>Generate another variant</p>
+          </div>
+          <!-- section navigation -->
+          <!-- block-level e.g div, p, img, etc. -->
+          <div class="flex justify-between">
+            <div class="flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <!-- inline-level -->
+            <strong>1/2</strong>
+          </div>
         </div>
-      </div>
-      <!-- end: 3rd section -->
-  `;
+        <!-- end: 3rd section -->
+    `;
+
+    // get a value
+    // console.log();
+    const userInput = taskPromptTextEl.value;
+    //@TODO: 1. make this show in the web view
+    console.log(userInput);
+    //    set a value
+    taskPromptTextEl.value = "";
+  }
 });
 
 // Pomodoro
