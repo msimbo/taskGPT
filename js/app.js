@@ -4,19 +4,14 @@ const matrixBtn = document.getElementById("matrix-btn"); //object
 const ztdBtn = document.getElementById("ztd-btn"); //object
 const gtdBtn = document.getElementById("gtd-btn"); //object
 const taskType = document.getElementById("task-type");
+const resetBtnEl = document.getElementById("reset-btn");
 
 // define variable
 const taskPromptTextEl = document.getElementById("task-prompt");
 const taskPromptResultEl = document.getElementById("task-prompt-result");
 
+resetBtnEl.addEventListener("click", () => generateTask("reset"));
 // Events Handlers
-
-// task switcher
-taskType.addEventListener("change", function () {
-  //@TODO: make this code work
-  // when I select an option, it apppends similar to L32-107
-  updateResult();
-});
 
 // taskType.addEventListener("change", (event) => {
 //   if (event.key === "ArrowUp") showBird();
@@ -123,6 +118,32 @@ taskPromptTextEl.addEventListener("keydown", function (event) {
   }
 });
 
+// task switcher
+taskType.addEventListener("change", function (event) {
+  // pseudocode --
+  // if some selects "Pomodoro"
+  if (event.target.value === "Pomodoro") generateTask("Pomodoro"); // missing arguments
+  if (event.target.value === "ZTD") generateTask("ZTD");
+  if (event.target.value === "Matrix") generateTask("Matrix");
+});
+
+// ( parameter
+function generateTask(type) {
+  // const taskType = undefined
+  console.log(`you are using the ${type} Technique... generating`);
+}
+// const generatePomodoroTask = () =>
+// console.log("you are using the PMD Technique... generating");
+function generatePomodoroTask() {
+  console.log("you are using the PMD Technique... generating");
+}
+function generateZTDTask() {
+  console.log("you are using the ZTD Technique... generating");
+}
+// Matrix;
+function generateMatrixTask() {
+  console.log("you are using the  Technique... generating");
+}
 // Pomodoro
 pomoBtn.addEventListener("click", function () {
   console.log("You clicked the PMD Btn");
