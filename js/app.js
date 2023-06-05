@@ -3,6 +3,7 @@ const pomoBtn = document.getElementById("pomo-btn"); // object
 const matrixBtn = document.getElementById("matrix-btn"); //object
 const ztdBtn = document.getElementById("ztd-btn"); //object
 const gtdBtn = document.getElementById("gtd-btn"); //object
+const esBtn = document.getElementById("es-btn"); //object
 const taskType = document.getElementById("task-type");
 const resetBtnEl = document.getElementById("reset-btn");
 
@@ -10,31 +11,25 @@ const resetBtnEl = document.getElementById("reset-btn");
 const taskPromptTextEl = document.getElementById("task-prompt");
 const taskPromptResultEl = document.getElementById("task-prompt-result");
 
-resetBtnEl.addEventListener("click", () => generateTask("reset"));
-// Events Handlers
+// PS:
+// when I click the :start over: btn
+resetBtnEl.addEventListener("click", () => resetPage());
 
-// taskType.addEventListener("change", (event) => {
-//   if (event.key === "ArrowUp") showBird();
-//   if (event.key === "ArrowDown") showConfetti();
-//   if (event.key === "Meta") shutDownGame();
-// });
-
-// an alternative
-// taskType.addEventListener("change", () => updateResult());
-
-// === text prompt
-taskPromptTextEl.addEventListener("keydown", function (event) {
-  //   console.log("this works on loosing focus");
-  //   console.log(taskPromptResultEl);
-  // console.log(event.key);
-  // console.log(event.key === "Enter");
-
-  // if (event.key === "Enter") console.log("Run onenter pressed");
-  if (event.key === "Enter") {
-    taskPromptResultEl.innerHTML = `
+function resetPage() {
+  // set the value of the web view to nothing
+  taskPromptResultEl.innerHTML = "";
+  // set the content of the textarea to nothing
+  taskPromptTextEl.value = "";
+}
+// ( parameter
+function generateTask(type = "Pomodoro") {
+  // let type = "default_task";
+  // type = "default"
+  // console.log(`you are using the ${type} technique... generating`);
+  taskPromptResultEl.innerHTML = `
     <!-- start: second section-->
         <div class="p-6">
-          <p>what should i do today?</p>
+          <p class="text-4xl">Here's your plan based on ${type} technique</p>
         </div>
         <!-- end: second section-->
 
@@ -107,7 +102,25 @@ taskPromptTextEl.addEventListener("keydown", function (event) {
         </div>
         <!-- end: 3rd section -->
     `;
+}
+// taskType.addEventListener("change", (event) => {
+//   if (event.key === "ArrowUp") showBird();
+//   if (event.key === "ArrowDown") showConfetti();
+//   if (event.key === "Meta") shutDownGame();
+// });
 
+// an alternative
+// taskType.addEventListener("change", () => updateResult());
+
+// === text prompt
+taskPromptTextEl.addEventListener("keydown", function (event) {
+  //   console.log("this works on loosing focus");
+  //   console.log(taskPromptResultEl);
+  // console.log(event.key);
+  // console.log(event.key === "Enter");
+
+  // if (event.key === "Enter") console.log("Run onenter pressed");
+  if (event.key === "Enter") {
     // get a value
     // console.log();
     const userInput = taskPromptTextEl.value;
@@ -115,6 +128,8 @@ taskPromptTextEl.addEventListener("keydown", function (event) {
     console.log(userInput);
     //    set a value
     taskPromptTextEl.value = "";
+
+    generateTask(userInput);
   }
 });
 
@@ -122,16 +137,27 @@ taskPromptTextEl.addEventListener("keydown", function (event) {
 taskType.addEventListener("change", function (event) {
   // pseudocode --
   // if some selects "Pomodoro"
-  if (event.target.value === "Pomodoro") generateTask("Pomodoro"); // missing arguments
-  if (event.target.value === "ZTD") generateTask("ZTD");
-  if (event.target.value === "Matrix") generateTask("Matrix");
+  // if (event.target.value === "Pomodoro") generateTask("Pomodoro"); // missing arguments
+  // if (event.target.value === "ZTD") generateTask("ZTD");
+  // if (event.target.value === "Matrix") generateTask("Matrix");
+
+  //Another way?
+  switch (event.target.value) {
+    case "Pomodoro":
+      generateTask("Pomodoro");
+      break;
+    case "ZTD":
+      generateTask("ZTD");
+      break;
+    case "Matrix":
+      generateTask("Matrix");
+      break;
+    default:
+      generateTask();
+      break;
+  }
 });
 
-// ( parameter
-function generateTask(type) {
-  // const taskType = undefined
-  console.log(`you are using the ${type} Technique... generating`);
-}
 // const generatePomodoroTask = () =>
 // console.log("you are using the PMD Technique... generating");
 function generatePomodoroTask() {
@@ -146,22 +172,27 @@ function generateMatrixTask() {
 }
 // Pomodoro
 pomoBtn.addEventListener("click", function () {
-  console.log("You clicked the PMD Btn");
+  generateTask("Pomodoro");
 });
 
 // Matrix
 matrixBtn.addEventListener("click", function () {
-  console.log("You clicked the Matrix Btn");
+  generateTask("Matrix");
+});
+
+// random new
+esBtn.addEventListener("click", function () {
+  generateTask("abdendeidneide");
 });
 
 // ZTD
 ztdBtn.addEventListener("click", function () {
-  console.log("You clicked the ZTD Btn");
+  generateTask();
 });
 
 // GTD
 gtdBtn.addEventListener("click", function () {
-  console.log("You clicked the GTD Btn");
+  generateTask("GTD");
 });
 
 // C-style
