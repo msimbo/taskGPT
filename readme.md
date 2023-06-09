@@ -1,36 +1,42 @@
 ## Overview
 
-This projects allows us to use ChatGPT to help people manage their workload
+This app allows users to generate a day/task plan based on AI using established productivity techniques.
 
 ![Image Reference](https://i.imgur.com/4olObwC.png)
 ![Working reference](https://i.imgur.com/ucnvvbO.gif)
 
-## Getting Started
+## User Journey
 
-- [x] Bootstrap the project `mkdir  .....`
-- [x] Install TailwindCSS (TW)
-  - 1. (Node & yarn)
-  - 2. `yarn add -D tailwindcss && npx tailwincss init`
-  - 3. update tailwind.config.js (`content: []` block)
-  - 4. Add my tailwind.css stuff (@tailwind ....)
-  - 5. `npx tailwindcss -i ./tailwind.css -o ./styles.css --watch`
-  - 6. add my `link:css` point to `./style.css`
-  - 7. Do some backflips (highly optional)
-- [x] Setup HTML semantic structure
-- [ ] ...
+How will how user interact and use this app? What problem am I helping this use solve AND how am I doing it?
 
-### Additional notes:
+```mermaid
+graph TD;
+  A[User] --> B[Generates day plan]
+  B --> C[View details of the plan]
+```
 
-1. checkout to the "default" `git checkout main`
-2. merge the branch from "other" into the default `git merge feature/html-semantics` <?? failed!!!>
-   2a: Resolve a git merge (using VSC)
-   2b: Add the changes and commit: `git add -u && git commit -m "merge`
-3. Done.
+```mermaid
+graph TD;
+  A[User] --> B[types in what they want to achieve]
+  B --> C[get a plan based on that]
+```
 
-## Dev Git Workflow
+## Application Architecture
 
-1. Create new WIP branch (names "feature/blah-blah")
-2. Do work in branch (with lots of commits along the way)
-3. When all is OK on that branch
-4. merge into "production" (main/master) branch
-5. Rinse and repeat.
+Designing the algorithm for our code, problem
+
+### Use case 1:
+
+```mermaid
+graph TD;
+  A[accept use prompt from input] --> B[Use the prompt to generate an OpenAPI-based plan]
+  B --> C[Display the plan to use in web view]
+```
+
+### Use case 2:
+
+```mermaid
+graph TD;
+ A[User clicks on a technique btn] --> B[generate a OpenAPI-based plan based on a default prompt]
+B --> C[Display the plan to use in web view]
+```
