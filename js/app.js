@@ -27,18 +27,12 @@ function resetPage() {
  * This handler generates and display the task
  */
 taskPromptTextEl.addEventListener("keydown", function (event) {
-  //   console.log("this works on loosing focus");
-  //   console.log(taskPromptResultEl);
-  // console.log(event.key);
-  // console.log(event.key === "Enter");
-
-  // if (event.key === "Enter") console.log("Run onenter pressed");
   if (event.key === "Enter") {
     const userInput = taskPromptTextEl.value;
     taskPromptTextEl.value = "";
 
-    // core business/logic
-    const generatedPlan = generateTask(userInput); // Data Structure
+    // core business/logic Model
+    const generatedPlan = generateTask(); // Data Structure {Array}
 
     // view logic
     showGeneratedPlan(generatedPlan);
@@ -61,7 +55,14 @@ function generateTask(
   return generateResponseFromAPI;
 }
 
+/**
+ * Gets the GPT from OpenAI's backend
+ *
+ * @param {string} prompt
+ * @returns {Array}
+ */
 function getGPTReponseData(prompt) {
+  // some GPT things returns a response
   return [
     "Certainly! The Pomodoro Technique is a time management method that uses a timer to break work into intervals, typically 25 minutes in length, separated by short breaks. Here's an example of a day plan based on the Pomodoro Technique:",
     "<p>Morning Routine (30 minutes)</p><ul><li>Start the day with a brief meditation or stretching session (5 minutes)</li><li>Review your goals and plan for the day (5 minutes)</li><li>Enjoy a healthy breakfast (15 minutes)</li><li>Check and respond to urgent emails or messages (5 minutes)</li></ul>",
@@ -82,6 +83,19 @@ function getGPTReponseData(prompt) {
 // Mock a function
 function showGeneratedPlan(generatedPlanInput) {
   console.log(generatedPlanInput);
+
+  // console.log(generatedPlanInput.length === 0);
+
+  // let index;
+  // (generatedPlanInput.length < index)
+  // index++ // 2
+
+  // for(let index; generatedPlanInput.length < index; index++){
+  //     console.log('hello')
+  // }
+
+  generatedPlanInput.forEach((item) => displayContent(item));
+
   // taskPromptResultEl.innerHTML = `
   //   <!-- start: second section-->
   //       <div class="p-6">
@@ -159,7 +173,14 @@ function showGeneratedPlan(generatedPlanInput) {
   //       <!-- end: 3rd section -->
   //   `;
 }
+// console.log( "1" + "1" ); // 11
+// console.log( 1 + 1 ); // 2
 
+function displayContent(aDisplayItem, showResultDOM = taskPromptResultEl) {
+  // @TODO:
+  showResultDOM.innerHTML += `${aDisplayItem}`; // YES!!!!
+  console.log(aDisplayItem);
+}
 // task switcher
 taskType.addEventListener("change", function (event) {
   // pseudocode --
