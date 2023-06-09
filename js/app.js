@@ -22,97 +22,10 @@ function resetPage() {
   taskPromptTextEl.value = "";
 }
 // ( parameter
-function generateTask(type = "Pomodoro") {
-  // let type = "default_task";
-  // type = "default"
-  // console.log(`you are using the ${type} technique... generating`);
-  taskPromptResultEl.innerHTML = `
-    <!-- start: second section-->
-        <div class="p-6">
-          <p class="text-4xl">Here's your plan based on ${type} technique</p>
-        </div>
-        <!-- end: second section-->
 
-        <!-- start: 3rd section -->
-        <div class="p-6 bg-gray-200">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-            similique beatae maxime quo, voluptas molestiae!
-          </p>
-          <div class="section-btn">
-            <p>generate full thingas to do.</p>
-          </div>
-          <div class="section-btn">
-            <p>suggest something</p>
-          </div>
-
-          <div class="section-btn flex">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <p>Generate another variant</p>
-          </div>
-          <!-- section navigation -->
-          <!-- block-level e.g div, p, img, etc. -->
-          <div class="flex justify-between">
-            <div class="flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <!-- inline-level -->
-            <strong>1/2</strong>
-          </div>
-        </div>
-        <!-- end: 3rd section -->
-    `;
-}
-// taskType.addEventListener("change", (event) => {
-//   if (event.key === "ArrowUp") showBird();
-//   if (event.key === "ArrowDown") showConfetti();
-//   if (event.key === "Meta") shutDownGame();
-// });
-
-// an alternative
-// taskType.addEventListener("change", () => updateResult());
-
-// === text prompt
+/**
+ * This handler generates and display the task
+ */
 taskPromptTextEl.addEventListener("keydown", function (event) {
   //   console.log("this works on loosing focus");
   //   console.log(taskPromptResultEl);
@@ -121,17 +34,131 @@ taskPromptTextEl.addEventListener("keydown", function (event) {
 
   // if (event.key === "Enter") console.log("Run onenter pressed");
   if (event.key === "Enter") {
-    // get a value
-    // console.log();
     const userInput = taskPromptTextEl.value;
-    //@TODO: 1. make this show in the web view
-    console.log(userInput);
-    //    set a value
     taskPromptTextEl.value = "";
 
-    generateTask(userInput);
+    // core business/logic
+    const generatedPlan = generateTask(userInput); // Data Structure
+
+    // view logic
+    showGeneratedPlan(generatedPlan);
   }
 });
+
+/**
+ * Generates a response based on user input/prompt
+ *
+ * @param {string} prompt
+ * @returns {Array}
+ */
+function generateTask(
+  prompt = "generate a day plan based on the pomodoro technique"
+) {
+  // use OpenAI to generate a plan based on a prod. method
+  const generateResponseFromAPI = getGPTReponseData(prompt); // Array
+
+  // return the data to the caller...
+  return generateResponseFromAPI;
+}
+
+function getGPTReponseData(prompt) {
+  return [
+    "Certainly! The Pomodoro Technique is a time management method that uses a timer to break work into intervals, typically 25 minutes in length, separated by short breaks. Here's an example of a day plan based on the Pomodoro Technique:",
+    "<p>Morning Routine (30 minutes)</p><ul><li>Start the day with a brief meditation or stretching session (5 minutes)</li><li>Review your goals and plan for the day (5 minutes)</li><li>Enjoy a healthy breakfast (15 minutes)</li><li>Check and respond to urgent emails or messages (5 minutes)</li></ul>",
+    "<p>Pomodoro Work Session 1 (25 minutes)</p><ul><li>Choose a task or project to focus on</li><li>Set a timer for 25 minutes and work on the task without any distractions</li><li>Take a short break (5 minutes) after completing the session</li></ul>",
+    "<p>Morning Routine (30 minutes)</p><ul><li>Start the day with a brief meditation or stretching session (5 minutes)</li><li>Review your goals and plan for the day (5 minutes)</li><li>Enjoy a healthy breakfast (15 minutes)</li><li>Check and respond to urgent emails or messages (5 minutes)</li></ul>",
+    "<p>Pomodoro Work Session 1 (25 minutes)</p><ul><li>Choose a task or project to focus on</li><li>Set a timer for 25 minutes and work on the task without any distractions</li><li>Take a short break (5 minutes) after completing the session</li></ul>",
+
+    "<p>Morning Routine (30 minutes)</p><ul><li>Start the day with a brief meditation or stretching session (5 minutes)</li><li>Review your goals and plan for the day (5 minutes)</li><li>Enjoy a healthy breakfast (15 minutes)</li><li>Check and respond to urgent emails or messages (5 minutes)</li></ul>",
+    "<p>Pomodoro Work Session 1 (25 minutes)</p><ul><li>Choose a task or project to focus on</li><li>Set a timer for 25 minutes and work on the task without any distractions</li><li>Take a short break (5 minutes) after completing the session</li></ul>",
+
+    "<p>Morning Routine (30 minutes)</p><ul><li>Start the day with a brief meditation or stretching session (5 minutes)</li><li>Review your goals and plan for the day (5 minutes)</li><li>Enjoy a healthy breakfast (15 minutes)</li><li>Check and respond to urgent emails or messages (5 minutes)</li></ul>",
+    "<p>Pomodoro Work Session 1 (25 minutes)</p><ul><li>Choose a task or project to focus on</li><li>Set a timer for 25 minutes and work on the task without any distractions</li><li>Take a short break (5 minutes) after completing the session</li></ul>",
+
+    "Remember to adjust the timings and number of work sessions based on your personal preferences and energy levels. The Pomodoro Technique can help you maintain focus and productivity throughout the day while ensuring you take regular breaks to recharge.",
+  ];
+}
+
+// Mock a function
+function showGeneratedPlan(generatedPlanInput) {
+  console.log(generatedPlanInput);
+  // taskPromptResultEl.innerHTML = `
+  //   <!-- start: second section-->
+  //       <div class="p-6">
+  //         <p class="text-4xl">Here's your plan based on ${type} technique</p>
+  //       </div>
+  //       <!-- end: second section-->
+
+  //       <!-- start: 3rd section -->
+  //       <div class="p-6 bg-gray-200">
+  //         <p>
+  //           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+  //           similique beatae maxime quo, voluptas molestiae!
+  //         </p>
+  //         <div class="section-btn">
+  //           <p>generate full thingas to do.</p>
+  //         </div>
+  //         <div class="section-btn">
+  //           <p>suggest something</p>
+  //         </div>
+
+  //         <div class="section-btn flex">
+  //           <svg
+  //             xmlns="http://www.w3.org/2000/svg"
+  //             fill="none"
+  //             viewBox="0 0 24 24"
+  //             stroke-width="1.5"
+  //             stroke="currentColor"
+  //             class="w-6 h-6"
+  //           >
+  //             <path
+  //               stroke-linecap="round"
+  //               stroke-linejoin="round"
+  //               d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+  //             />
+  //           </svg>
+  //           <p>Generate another variant</p>
+  //         </div>
+  //         <!-- section navigation -->
+  //         <!-- block-level e.g div, p, img, etc. -->
+  //         <div class="flex justify-between">
+  //           <div class="flex">
+  //             <svg
+  //               xmlns="http://www.w3.org/2000/svg"
+  //               fill="none"
+  //               viewBox="0 0 24 24"
+  //               stroke-width="1.5"
+  //               stroke="currentColor"
+  //               class="w-6 h-6"
+  //             >
+  //               <path
+  //                 stroke-linecap="round"
+  //                 stroke-linejoin="round"
+  //                 d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  //               />
+  //             </svg>
+  //             <svg
+  //               xmlns="http://www.w3.org/2000/svg"
+  //               fill="none"
+  //               viewBox="0 0 24 24"
+  //               stroke-width="1.5"
+  //               stroke="currentColor"
+  //               class="w-6 h-6"
+  //             >
+  //               <path
+  //                 stroke-linecap="round"
+  //                 stroke-linejoin="round"
+  //                 d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  //               />
+  //             </svg>
+  //           </div>
+  //           <!-- inline-level -->
+  //           <strong>1/2</strong>
+  //         </div>
+  //       </div>
+  //       <!-- end: 3rd section -->
+  //   `;
+}
 
 // task switcher
 taskType.addEventListener("change", function (event) {
